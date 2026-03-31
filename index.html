@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我們的小宇宙 - Our Love Story</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar glass-nav">
+        <div class="logo">Our Story ✨</div>
+        <ul class="nav-links">
+            <li><a href="#counter">相愛計時</a></li>
+            <li><a href="#timeline">時光隧道</a></li>
+            <li><a href="#gallery">甜蜜相冊</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section -->
+    <header class="hero" id="counter">
+        <div class="hero-bg"></div>
+        <div class="hero-content fade-in-up">
+            <h1 class="romantic-title">我們已經相愛了</h1>
+            <div class="counter-box glass">
+                <div class="time-block">
+                    <span id="years">00</span><p>年</p>
+                </div>
+                <div class="time-divider">:</div>
+                <div class="time-block">
+                    <span id="days">00</span><p>天</p>
+                </div>
+                <div class="time-divider">:</div>
+                <div class="time-block">
+                    <span id="hours">00</span><p>時</p>
+                </div>
+                <div class="time-divider">:</div>
+                <div class="time-block">
+                    <span id="minutes">00</span><p>分</p>
+                </div>
+                <div class="time-divider">:</div>
+                <div class="time-block">
+                    <span id="seconds">00</span><p>秒</p>
+                </div>
+            </div>
+            
+            <div class="countdown-cards">
+                <div class="card glass">
+                    <i class="ph-fill ph-cake icon-pink"></i>
+                    <h3>寶貝生日倒數</h3>
+                    <p class="countdown-text" id="bday-countdown">計算中...</p>
+                </div>
+                <div class="card glass">
+                    <i class="ph-fill ph-gift icon-blue"></i>
+                    <h3>我的生日倒數</h3>
+                    <p class="countdown-text" id="my-bday-countdown">計算中...</p>
+                </div>
+                <div class="card glass">
+                    <i class="ph-fill ph-champagne icon-gold"></i>
+                    <h3>紀念日倒數</h3>
+                    <p class="countdown-text" id="anniv-countdown">計算中...</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section" id="timeline">
+        <h2 class="section-title">時光隧道 <span>Memory Timeline</span></h2>
+        <div class="timeline">
+            <!-- Timeline Item -->
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass-card">
+                    <span class="date">2024.07.13</span>
+                    <h3>我們在一起的第一天</h3>
+                    <p>這是我們小宇宙誕生的一天，未來請多多指教！</p>
+                </div>
+            </div>
+            <!-- Timeline Item -->
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass-card">
+                    <span class="date">2024.12.07</span>
+                    <h3>演唱會約會</h3>
+                    <p>一起手持『YAI 華意』愛心手燈，聽著最喜歡的歌，沉浸在我們的專屬世界裡。</p>
+                </div>
+            </div>
+            <!-- Timeline Item -->
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass-card">
+                    <span class="date">2025.07.13</span>
+                    <h3>我們的一週年</h3>
+                    <p>謝謝妳陪我走過了這特別的第一年，這一年充滿了我們的專屬回憶與歡笑。</p>
+                </div>
+            </div>
+            <!-- Timeline Item -->
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass-card">
+                    <span class="date">2025.12.31</span>
+                    <h3>跨年慶祝</h3>
+                    <p>在倒數聲中一起迎接 2026 年的到來，新年快樂，我的唯一。</p>
+                </div>
+            </div>
+            <!-- Timeline Item -->
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass-card">
+                    <span class="date">2026.01.24</span>
+                    <h3>趣味出遊</h3>
+                    <p>在紫色主題展覽的全身鏡前留下最俏皮的我們！</p>
+                </div>
+            </div>
+            <!-- Timeline Item -->
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass-card">
+                    <span class="date">2026.02.14</span>
+                    <h3>第一個情人節約會</h3>
+                    <p>溫馨浪漫的紀念時刻，有瑄瑄在身邊就是最好的禮物。</p>
+                </div>
+            </div>
+            <!-- Timeline Item -->
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass-card">
+                    <span class="date">2026.03.14</span>
+                    <h3>瑄瑄生日大餐</h3>
+                    <p>在高樓層觀景餐廳看夜景，切下繽紛的生日蛋糕，提早慶祝寶貝生日快樂！🎂</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <h2 class="section-title">甜蜜畫廊 <span>Photo Gallery</span></h2>
+        <p class="section-desc">請在這裡放上我們最喜歡的合照（未來可連結您的 Google 相簿）</p>
+        <div class="masonry-grid">
+            <div class="polaroid reveal">
+                <div class="polaroid-img" style="background-image: url('https://lh3.googleusercontent.com/pw/AP1GczN56te3oK_fZ0uFnLBI-g5VJ6q-j3Jvzsg8YbbHMwm9E9A0t0uOG8FZ3Ov67-t24QICE7M2B8S75PoR4IeXwA-ApXuhzSDATVC68w0BX0_VXiqHUj8Q=w493-h277-no'); background-position: top;"></div>
+                <div class="polaroid-text">演唱會約會 🎵</div>
+            </div>
+            <div class="polaroid reveal">
+                <div class="polaroid-img" style="background-image: url('https://lh3.googleusercontent.com/pw/AP1GczM8JrJCFBxPiV37J4Fe4Fvtezy-2Vzh0ifXlErP4n9PxoRLIOfQq7ObbSO2zQGv2rcAW9slUj4YxIgG9izZmHkXcdCRjVh9m5KU-inCfHjqLWY2FhSM=w363-h272-no');"></div>
+                <div class="polaroid-text">跨年迎接2026 🎆</div>
+            </div>
+            <div class="polaroid reveal">
+                <div class="polaroid-img" style="background-image: url('https://lh3.googleusercontent.com/pw/AP1GczOyUkpZYOXrk9vhAcTiMpFIr6CtlXJn66k7Al5x6kvTg1-tsGzrwnouhEbdub4oM45hEfD2EhDxJvLXx8tqgVFHq768f-qq6kdviwYWlei6dSAm0Rkv=w162-h287-no');"></div>
+                <div class="polaroid-text">紫色鏡像合照 💜</div>
+            </div>
+            <div class="polaroid reveal">
+                <div class="polaroid-img" style="background-image: url('https://lh3.googleusercontent.com/pw/AP1GczP_LYDEAgFAG-GJS9S92aOGQHMqir9BrjbjNe5BymKH0mefZ2DQN4X4oLbgd7RE9DuuWPMwSLm5Y_PPYIPvtxdoI29CA9E_eM6bVsuJx04hTKNwoIkC=w162-h287-no');"></div>
+                <div class="polaroid-text">浪漫情人節 🌹</div>
+            </div>
+            <div class="polaroid reveal">
+                <div class="polaroid-img" style="background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNFbzAQs2st-CTcKrSF1I3YcIRO3nhLcIy6jGb9a411l8vVCUdbOLGRAa0Vw-ZX3pxW0col0Wyn35NBCalXo2akr1TNNriyAPgneHY3ipDfSLAIe3EqWgf_iWBVRcE56GzkKX4L6s9rM3yk8zOKxT8d9w=w574-h1020-s-no-gm');"></div>
+                <div class="polaroid-text">瑄瑄生日大餐 🎂</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Made with ❤️ by Us</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
