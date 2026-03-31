@@ -133,6 +133,7 @@ body {
   font-weight: 800;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 2rem;
 }
@@ -324,6 +325,17 @@ body {
   color: var(--text-light);
   line-height: 1.6;
   font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+}
+
+.timeline-img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
 }
 
 /* --- Gallery --- */

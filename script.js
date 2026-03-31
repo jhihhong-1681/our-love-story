@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const annivDiff = Math.ceil((anniv - now) / (1000 * 60 * 60 * 24));
         const nextYearAnniv = anniv.getFullYear() - 2024; // 從 2024 開始算
-        document.getElementById('anniv-countdown').innerText = `還有 ${annivDiff} 天 (邁向第 ${nextYearAnniv} 年!)`;
+        document.getElementById('anniv-countdown').innerHTML = `還有 ${annivDiff} 天<br><span style="font-size: 0.9rem; font-weight: normal;">(邁向第 ${nextYearAnniv} 年!)</span>`;
     }
     
     updateCountdowns();
