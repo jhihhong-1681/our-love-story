@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="style.css?v=2">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
     <!-- Navbar -->
@@ -203,10 +204,33 @@
         </div>
     </section>
 
+    <!-- Scratch & Win Modal -->
+    <div class="scratch-modal-overlay" id="scratch-modal">
+        <div class="scratch-modal-content glass-card">
+            <button class="close-btn" id="close-scratch">&times;</button>
+            <h2 class="section-title" style="margin-bottom: 5px;">阿瑄專屬驚喜 ✨</h2>
+            <p class="section-desc">用力刮開粉紅色的漆吧！</p>
+            <div class="scratch-container">
+                <div class="scratch-result" id="scratch-result">
+                    <!-- The random text will go here -->
+                </div>
+                <canvas id="scratch-canvas" width="300" height="150"></canvas>
+            </div>
+            <p class="scratch-hint" id="scratch-hint">偷偷告訴妳：能奴役阿紘的機率有 30% 喔！</p>
+            <button class="btn-primary" id="btn-play-again" style="display: none; margin-top: 15px; width: 100%;">再刮一次</button>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <button class="fab-btn" id="open-scratch">
+        <span class="fab-icon">🎁</span>
+        <span class="fab-text">專屬驚喜</span>
+    </button>
+
     <footer>
         <p>Made with ❤️ by Us</p>
     </footer>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=3"></script>
 </body>
 </html>

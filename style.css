@@ -401,3 +401,147 @@ footer {
   .timeline-item:nth-child(even) { left: 0%; }
   .timeline-dot { left: 21px !important; }
 }
+
+/* --- Floating Action Button --- */
+.fab-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 25px;
+    box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fab-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(255, 154, 158, 0.6);
+}
+
+.fab-icon {
+    font-size: 1.5rem;
+}
+
+/* --- Scratch Modal --- */
+.scratch-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: none; /* hidden by default */
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.scratch-modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.scratch-modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    position: relative;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.scratch-modal-overlay.active .scratch-modal-content {
+    transform: translateY(0);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff9a9e;
+}
+
+.scratch-container {
+    position: relative;
+    width: 300px;
+    height: 150px;
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.scratch-result {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #555;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+#scratch-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.scratch-hint {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+}
+.btn-primary:active {
+    transform: scale(0.95);
+}
