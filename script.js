@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 4. Scratch & Win Logic ---
+        // --- 4. Scratch & Win Logic ---
     const prizes = [
         // 30% 女方懲罰 / 男方福利 (6/20)
         "😈 驚天懲罰：阿瑄請喝手搖飲一杯 (阿紘指定)",
@@ -121,24 +121,59 @@ document.addEventListener('DOMContentLoaded', () => {
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
         const resultDiv = document.getElementById('scratch-result');
         const playAgainBtn = document.getElementById('btn-play-again');
+        const COOLDOWN_MS = 168 * 60 * 60 * 1000; // 168 hours
         
         let isDrawing = false;
         let isRevealed = false;
+        let currentDrawPrize = null;
 
         function initScratchCard() {
             isRevealed = false;
             playAgainBtn.style.display = 'none';
+
+            let lastDrawTime = localStorage.getItem('lastDrawTime');
+            let lastDrawPrize = localStorage.getItem('lastDrawPrize');
+            const isScratched = localStorage.getItem('isScratched') === 'true';
+
+            if (lastDrawTime && (Date.now() - parseInt(lastDrawTime)) >= COOLDOWN_MS) {
+                localStorage.removeItem('lastDrawTime');
+                localStorage.removeItem('lastDrawPrize');
+                localStorage.removeItem('isScratched');
+                lastDrawTime = null;
+                lastDrawPrize = null;
+            }
+
+            if (lastDrawPrize) {
+                currentDrawPrize = lastDrawPrize;
+                if (isScratched) {
+                    const remainingHours = Math.ceil((COOLDOWN_MS - (Date.now() - parseInt(lastDrawTime))) / (1000 * 60 * 60));
+                    isRevealed = true;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+                    
+                    const prizeIndex = prizes.indexOf(currentDrawPrize);
+                    const color = (prizeIndex !== -1 && prizeIndex < 6) ? '#636e72' : '#ff4081';
+                    
+                    resultDiv.innerHTML = `
+                        <span style="font-size:1.1rem; color:${color}; font-weight:bold; display:block; margin-bottom:10px;">${currentDrawPrize}</span>
+                        <span style="font-size:0.9rem; color:#888;">這週已經抽過囉！還需等待 ${remainingHours} 小時</span>
+                    `;
+                    return;
+                }
+            } else {
+                const randomIndex = Math.floor(Math.random() * prizes.length);
+                currentDrawPrize = prizes[randomIndex];
+                localStorage.setItem('lastDrawTime', Date.now().toString());
+                localStorage.setItem('lastDrawPrize', currentDrawPrize);
+                localStorage.setItem('isScratched', 'false');
+            }
+
+            // Draw prize behind
+            const prizeIndex = prizes.indexOf(currentDrawPrize);
+            const color = (prizeIndex !== -1 && prizeIndex < 6) ? '#636e72' : '#ff4081';
+            resultDiv.innerHTML = `<span style="font-size:1.1rem; color:${color}; font-weight:bold;">${currentDrawPrize}</span>`;
             
-            // Pick random prize
-            const randomIndex = Math.floor(Math.random() * prizes.length);
-            const randomPrize = prizes[randomIndex];
-            // 讓前6個(她的懲罰)顯示灰色，後14個(她的獎勵)顯示粉紅色
-            const color = (randomIndex < 6) ? '#636e72' : '#ff4081';
-            resultDiv.innerHTML = `<span style="font-size:1.1rem; color:${color}; font-weight:bold;">${randomPrize}</span>`;
-            
-            // Setup canvas
             ctx.globalCompositeOperation = 'source-over';
-            ctx.fillStyle = '#e0e0e0'; // Silver
+            ctx.fillStyle = '#e0e0e0'; 
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
             ctx.font = '22px "Noto Sans TC", sans-serif';
@@ -150,19 +185,24 @@ document.addEventListener('DOMContentLoaded', () => {
         
         initScratchCard();
 
-        // Open/Close Modal
         fabBtn.addEventListener('click', () => {
             modal.classList.add('active');
-            if (isRevealed) initScratchCard(); 
+            if (!isRevealed) initScratchCard(); 
         });
         
         closeBtn.addEventListener('click', () => {
             modal.classList.remove('active');
         });
 
-        playAgainBtn.addEventListener('click', initScratchCard);
+        playAgainBtn.addEventListener('click', () => {
+            const lastDrawTime = localStorage.getItem('lastDrawTime');
+            if (lastDrawTime && (Date.now() - parseInt(lastDrawTime)) < COOLDOWN_MS) {
+                alert('作弊禁止！這週的額度已經用完了喔😆 下週再來吧！');
+                return;
+            }
+            initScratchCard();
+        });
         
-        // Scratch logic
         function getMousePos(e) {
             const rect = canvas.getBoundingClientRect();
             let clientX = e.clientX;
@@ -171,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 clientX = e.touches[0].clientX;
                 clientY = e.touches[0].clientY;
             }
-            // Deal with CSS scaling differences if any
             const scaleX = canvas.width / rect.width;
             const scaleY = canvas.height / rect.height;
             return {
@@ -192,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function scratch(e) {
             if (!isDrawing || isRevealed) return;
-            e.preventDefault(); // Prevent scrolling on touch
+            e.preventDefault(); 
             const pos = getMousePos(e);
             
             ctx.globalCompositeOperation = 'destination-out';
@@ -214,13 +253,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const totalPixels = data.length / 4;
             const percentage = (transparentPixels / totalPixels) * 100;
             
-            if (percentage > 40) { // 降低清除門檻到 40%
+            if (percentage > 40) {
                 isRevealed = true;
+                localStorage.setItem('isScratched', 'true');
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                playAgainBtn.style.display = 'block';
+                playAgainBtn.style.display = 'none'; 
                 
-                // Confetti effect
-                if (window.confetti) {
+                if (window.confetti && prizes.indexOf(currentDrawPrize) >= 6) {
                     confetti({
                         particleCount: 150,
                         spread: 80,
@@ -231,7 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Events
         canvas.addEventListener('mousedown', startDraw);
         canvas.addEventListener('mousemove', scratch);
         canvas.addEventListener('mouseup', endDraw);
@@ -241,5 +279,4 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.addEventListener('touchmove', scratch, {passive: false});
         canvas.addEventListener('touchend', endDraw);
     }
-
 });
