@@ -13,16 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const years = Math.floor(days / 365);
         const remainingDays = days % 365;
         
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diff / 1000 / 60) % 60);
-        const seconds = Math.floor((diff / 1000) % 60);
-
         // 更新 DOM
         document.getElementById('years').innerText = String(years).padStart(2, '0');
         document.getElementById('days').innerText = String(remainingDays).padStart(2, '0');
-        document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-        document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
     }
 
     // 每秒更新一次
